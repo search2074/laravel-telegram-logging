@@ -15,6 +15,7 @@ return [
 
     // Proxy server
     'proxy' => env('TELEGRAM_LOGGER_PROXY', ''),
+    'proxy_auth' => env('TELEGRAM_LOGGER_PROXY_AUTH', ''),
 
     // Telegram API host without trailling slash
     'api_host' => env('TELEGRAM_LOGGER_API_HOST', 'https://api.telegram.org'),
