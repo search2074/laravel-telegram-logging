@@ -154,12 +154,19 @@ class TelegramHandler extends AbstractProcessingHandler
         $url = $host . '/bot' . $this->botToken . '/sendMessage?' . $httpQuery;
 
         $proxy = $this->getConfigValue('proxy');
+        $proxyAuth = $this->getConfigValue('proxy_auth');
 
         if (!empty($proxy)) {
+            $proxyParams = [
+                'proxy' => $proxy,
+            ];
+
+            if (!empty($proxyAuth)) {
+                $proxyParams['header'] = "Proxy-Authorization: Basic " . base64_encode($proxyAuth);
+            }
+
             $context = stream_context_create([
-                'http' => [
-                    'proxy' => $proxy,
-                ],
+                'http' => $proxyParams,
             ]);
             file_get_contents($url, false, $context);
         } else {

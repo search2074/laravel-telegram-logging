@@ -136,3 +136,8 @@ To use a proxy server, set the variable in the .env
 ```
 TELEGRAM_LOGGER_PROXY=proxy_server.com:port
 ```
+
+You can specify the login and password for the proxy in the .env:
+```
+TELEGRAM_LOGGER_PROXY_AUTH=login:password
+```
